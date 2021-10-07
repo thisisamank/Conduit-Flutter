@@ -1,0 +1,22 @@
+# POST https://node-express-conduit.appspot.com/api/users/login 
+# accept: application/json
+# content-Type: application/json
+
+# { 
+#     "user": { 
+#         "email": "test@test.com", "password": "123456" 
+#     }
+# }
+# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDlmZTk1OTY3MjEyMDAwYWYwMGJiNyIsInVzZXJuYW1lIjoic3RyaW5nMTIxIiwiYWRtaW4iOmZhbHNlLCJleHAiOjE2Mzc0MjMyNTMsImlhdCI6MTYzMjIzOTI1M30.ockmjgZO881C6k2HD8qk95xnCy08E7wGn9RLkSeMgNI
+POST https://realworld-temp-api.herokuapp.com/api/users/login/
+accept: application/json
+content-Type: application/json
+
+{
+  "user": {
+    "username": "string121",
+    "email": "string121@gmail.com",
+    "password": "string1"
+  }
+}
+

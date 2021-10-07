@@ -1,28 +1,27 @@
-import 'package:conduit_flutter/shared/repository/user_repository.dart';
+import 'package:conduit_flutter/auth/provider/auth_provider.dart';
+import 'package:conduit_flutter/auth/repository/conduit_authenticator.dart';
+import 'package:conduit_flutter/auth/repository/credentials_storage/secure_credentials_storage.dart';
+import 'package:conduit_flutter/shared/views/app.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final mockRegistration = {
-      "user": {
-        "username": "test1232",
-        "email": "test212@gmail.com",
-        "password": "1234567"
-      }
-    };
-    UserRegistrationRepository('http://node-express-conduit.appspot.com/')
-        .post(input: mockRegistration);
-    return MaterialApp(
-      home: Scaffold(
-        body: Container(),
-      ),
-    );
-  }
+  runApp(
+    // TODO: Use DI packages to do this.
+    MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider(
+          create: (context) => AuthProvider(
+            ConduitAuthenticator(
+              Dio(),
+              SecureCredentialsStorage(const FlutterSecureStorage()),
+            ),
+          ),
+        )
+      ],
+      child: App(),
+    ),
+  );
 }
