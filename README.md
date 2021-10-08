@@ -19,7 +19,7 @@ For more information on how to this works with other frontends/backends, head ov
 >
 > This image shows the architecture of this. Big shoutout to @reso-dev for his youtube tutorials [link](https://www.youtube.com/c/ResoCoder) which is the place I have gotten the inspiration.
 >
-<img src="C:\Users\thisi\Desktop\projects\mobileapp\public\images\architecture.png" style="zoom:30%;" />
+<img src="./public/images/architecture.png" style="zoom:30%;" />
 
 
 
