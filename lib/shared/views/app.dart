@@ -16,17 +16,10 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LoginCubit(
-        AuthProvider(
-          ConduitAuthenticator(
-            Dio(),
-            SecureCredentialsStorage(const FlutterSecureStorage()),
-          ),
-        ),
-      )..getCurrentUser(),
+      create: (context) =>
+          LoginCubit(context.read<AuthProvider>())..getCurrentUser(),
       child: BlocListener<LoginCubit, AuthState>(
         listener: (context, state) {
-          print(state);
           state.maybeMap(
             initial: (_) => appRouter.pushAndPopUntil(
               const SplashScreenRoute(),
