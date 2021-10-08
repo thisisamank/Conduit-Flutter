@@ -26,6 +26,7 @@ class App extends StatelessWidget {
       )..getCurrentUser(),
       child: BlocListener<LoginCubit, AuthState>(
         listener: (context, state) {
+          print(state);
           state.maybeMap(
             initial: (_) => appRouter.pushAndPopUntil(
               const SplashScreenRoute(),

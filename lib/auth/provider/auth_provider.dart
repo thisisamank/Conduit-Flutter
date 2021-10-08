@@ -5,7 +5,6 @@ import 'package:dartz/dartz.dart';
 
 class AuthProvider {
   final ConduitAuthenticator _authenticator;
-
   AuthProvider(this._authenticator);
   Future<bool> isUserSignedIn() {
     return _authenticator.isSignedIn();

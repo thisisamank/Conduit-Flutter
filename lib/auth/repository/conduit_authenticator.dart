@@ -25,45 +25,48 @@ class ConduitAuthenticator {
     }
   }
 
-  Future<bool> isSignedIn() => getSignedInUser().then((user) => user != null);
+  Future<bool> isSignedIn() async => getSignedInUser().then((user) {
+        return user != null;
+      });
 
   Future<Either<User, AuthFailure>> login({
     required String email,
     required String password,
   }) async {
-    try {
-      final response = await _dio.post(
-        '$_baseUrl$_loginPath',
-        data: {
-          "user": {
-            "email": email,
-            "password": password,
-          }
-        },
-      );
-      if (response.statusCode == 200) {
-        try {
-          final user = User.fromRawJson(response.data.toString());
-          _storage.save(user);
-          return left(user);
-        } on FormatException {
-          return right(const AuthFailure.network());
-        } on PlatformException catch (_) {
-          return right(const AuthFailure.storage());
+    // try {
+    final response = await _dio.post(
+      '$_baseUrl$_loginPath',
+      data: {
+        "user": {
+          "email": email,
+          "password": password,
         }
-      } else if (response.statusCode == 401) {
-        // TODO: Needs cleaning
-        final error = ConduitError.fromRawJson(response.data.toString());
-        return right(AuthFailure.network(error));
-      } else {
-        final error = ConduitError.fromRawJson(response.data.toString());
-        return right(AuthFailure.network(error));
+      },
+    );
+    if (response.statusCode == 200) {
+      try {
+        final user = User.fromJson(response.data as Map<String, dynamic>);
+        _storage.save(user);
+        return left(user);
+      } on FormatException {
+        return right(const AuthFailure.network());
+      } on PlatformException catch (_) {
+        return right(const AuthFailure.storage());
       }
-    } on FormatException {
-      return right(const AuthFailure.network());
-    } on PlatformException catch (_) {
-      return right(const AuthFailure.storage());
+    } else if (response.statusCode == 401) {
+      // TODO: Needs cleaning
+      final error =
+          ConduitError.fromJson(response.data as Map<String, dynamic>);
+      return right(AuthFailure.network(error));
+    } else {
+      final error = ConduitError.fromRawJson(response.data.toString());
+      return right(AuthFailure.network(error));
     }
+    // } on FormatException {
+    //   return right(const AuthFailure.network());
+    // } on PlatformException catch (_) {
+    //   return right(const AuthFailure.storage());
+    // }
   }
 
   // Future<User> signUp({
