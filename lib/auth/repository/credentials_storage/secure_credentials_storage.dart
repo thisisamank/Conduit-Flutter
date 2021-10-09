@@ -33,9 +33,7 @@ class SecureCredentialsStorage implements CredentialsStorage {
   Future<void> save(User user) async {
     _cachedUser = user;
     await _storage.write(key: _userKey, value: user.toRawJson());
-    print("conduit: Saved Successfully");
     final savedUser = await read();
-    print(savedUser!.toJson());
   }
 }
 
