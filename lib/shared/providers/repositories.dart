@@ -19,7 +19,7 @@ final credentialStorageProvider = RepositoryProvider(
       SecureCredentialsStorage(context.read<FlutterSecureStorage>()),
 );
 
-final conduitAuthenticatorProvider = RepositoryProvider(
+final authenticationApiProvider = RepositoryProvider(
   create: (context) => ConduitAuthenticator(
     context.read<Dio>(),
     context.read<SecureCredentialsStorage>(),

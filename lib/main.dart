@@ -12,10 +12,13 @@ void main() {
         flutterStorageProvider,
         dioProvider,
         credentialStorageProvider,
-        conduitAuthenticatorProvider,
+        authenticationApiProvider,
         appAuthProvider,
       ],
       child: App(),
     ),
   );
 }
+
+// command to generate files:
+// flutter pub run build_runner watch --delete-conflicting-outputs

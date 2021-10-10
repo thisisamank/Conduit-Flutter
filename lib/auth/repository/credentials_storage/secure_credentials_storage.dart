@@ -36,5 +36,3 @@ class SecureCredentialsStorage implements CredentialsStorage {
     final savedUser = await read();
   }
 }
-
-// flutter pub run build_runner watch --delete-conflicting-outputs

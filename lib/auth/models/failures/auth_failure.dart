@@ -6,5 +6,5 @@ part 'auth_failure.freezed.dart';
 @freezed
 class AuthFailure with _$AuthFailure {
   const factory AuthFailure.storage() = _Storage;
-  const factory AuthFailure.network([ConduitError? error]) = _Network;
+  const factory AuthFailure.network([String? error]) = _Network;
 }
