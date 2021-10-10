@@ -20,4 +20,13 @@ class AuthProvider {
   }) {
     return _authenticator.login(email: email, password: password);
   }
+
+  Future<Either<User, AuthFailure>> signUp({
+    required String username,
+    required String email,
+    required String password,
+  }) {
+    return _authenticator.signUp(
+        username: username, email: email, password: password);
+  }
 }

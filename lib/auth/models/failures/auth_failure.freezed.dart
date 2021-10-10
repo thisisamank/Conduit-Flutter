@@ -21,7 +21,7 @@ class _$AuthFailureTearOff {
     return const _Storage();
   }
 
-  _Network network([ConduitError? error]) {
+  _Network network([String? error]) {
     return _Network(
       error,
     );
@@ -36,19 +36,19 @@ mixin _$AuthFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() storage,
-    required TResult Function(ConduitError? error) network,
+    required TResult Function(String? error) network,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? storage,
-    TResult Function(ConduitError? error)? network,
+    TResult Function(String? error)? network,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? storage,
-    TResult Function(ConduitError? error)? network,
+    TResult Function(String? error)? network,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,7 +127,7 @@ class _$_Storage implements _Storage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() storage,
-    required TResult Function(ConduitError? error) network,
+    required TResult Function(String? error) network,
   }) {
     return storage();
   }
@@ -136,7 +136,7 @@ class _$_Storage implements _Storage {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? storage,
-    TResult Function(ConduitError? error)? network,
+    TResult Function(String? error)? network,
   }) {
     return storage?.call();
   }
@@ -145,7 +145,7 @@ class _$_Storage implements _Storage {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? storage,
-    TResult Function(ConduitError? error)? network,
+    TResult Function(String? error)? network,
     required TResult orElse(),
   }) {
     if (storage != null) {
@@ -194,7 +194,7 @@ abstract class _Storage implements AuthFailure {
 abstract class _$NetworkCopyWith<$Res> {
   factory _$NetworkCopyWith(_Network value, $Res Function(_Network) then) =
       __$NetworkCopyWithImpl<$Res>;
-  $Res call({ConduitError? error});
+  $Res call({String? error});
 }
 
 /// @nodoc
@@ -214,7 +214,7 @@ class __$NetworkCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
       error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as ConduitError?,
+              as String?,
     ));
   }
 }
@@ -225,7 +225,7 @@ class _$_Network implements _Network {
   const _$_Network([this.error]);
 
   @override
-  final ConduitError? error;
+  final String? error;
 
   @override
   String toString() {
@@ -253,7 +253,7 @@ class _$_Network implements _Network {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() storage,
-    required TResult Function(ConduitError? error) network,
+    required TResult Function(String? error) network,
   }) {
     return network(error);
   }
@@ -262,7 +262,7 @@ class _$_Network implements _Network {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? storage,
-    TResult Function(ConduitError? error)? network,
+    TResult Function(String? error)? network,
   }) {
     return network?.call(error);
   }
@@ -271,7 +271,7 @@ class _$_Network implements _Network {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? storage,
-    TResult Function(ConduitError? error)? network,
+    TResult Function(String? error)? network,
     required TResult orElse(),
   }) {
     if (network != null) {
@@ -313,9 +313,9 @@ class _$_Network implements _Network {
 }
 
 abstract class _Network implements AuthFailure {
-  const factory _Network([ConduitError? error]) = _$_Network;
+  const factory _Network([String? error]) = _$_Network;
 
-  ConduitError? get error => throw _privateConstructorUsedError;
+  String? get error => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$NetworkCopyWith<_Network> get copyWith =>
       throw _privateConstructorUsedError;

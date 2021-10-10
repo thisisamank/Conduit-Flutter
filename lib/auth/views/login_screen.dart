@@ -1,4 +1,4 @@
-import 'package:conduit_flutter/auth/cubits/login/login_cubit.dart';
+import 'package:conduit_flutter/auth/cubits/authentication_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -35,10 +35,10 @@ class LoginScreen extends StatelessWidget {
                 color: Colors.amber,
                 onPressed: () {
                   if (_key.currentState!.validate()) {
-                    BlocProvider.of<LoginCubit>(context).login(
-                      email: _emailController.text,
-                      password: _passwordController.text,
-                    );
+                    context.read<AuthenticationCubit>().login(
+                          email: _emailController.text,
+                          password: _passwordController.text,
+                        );
                   }
                 },
               ),
